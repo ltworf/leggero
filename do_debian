@@ -45,5 +45,5 @@ cp -r debian/ $UNCOMPRESSED/
 
 cd $UNCOMPRESSED
 dpkg-buildpackage
-lintian ../*.dsc
+lintian --pedantic -E --color auto -i -I ../*.dsc
 echo $UNCOMPRESSED
