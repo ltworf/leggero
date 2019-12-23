@@ -18,9 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    src/lilypondrunner.cpp \
     src/mainwindow.cpp
 
 HEADERS += \
+    src/lilypondrunner.h \
     src/mainwindow.h
 
 FORMS += \
