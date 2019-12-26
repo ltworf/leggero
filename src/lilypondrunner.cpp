@@ -20,6 +20,7 @@ Copyright (C) 2019  Salvo "LtWorf" Tomaselli
 #include "lilypondrunner.h"
 
 #include <QStringList>
+#include <QFile>
 
 LilyPondRunner::LilyPondRunner(QObject *parent) : QObject(parent)
 {
@@ -38,16 +39,22 @@ int LilyPondRunner::addData(QString data) {
     worker->start("lilypond", params, QIODevice::WriteOnly);
 
     worker->write(data.toUtf8());
+    worker->closeWriteChannel();
 
+    //FIXME This should be done asyncronously
     //Read the data and destroy when it is done
+    worker->waitForFinished();
 
     workers.append(worker);
-    results.append("");
 
     return this->counter++;
 }
 
 QString LilyPondRunner::getData(int id) {
-    //TODO boundary check
-    return results[id];
+    QFile f(tmpdir.path() + "/" + QString::number(id) + ".svg");
+
+    if (!f.exists())
+        return "FAILED";
+    f.open(QIODevice::ReadOnly);
+    return QString::fromUtf8(f.readAll());
 }
