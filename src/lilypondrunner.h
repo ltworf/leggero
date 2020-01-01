@@ -32,7 +32,6 @@ class LilyPondRunner : public QObject
 public:
     explicit LilyPondRunner(QObject *parent = nullptr);
     int addData(QString data);
-    QString getData(int id);
     Q_PROPERTY(QString tmpdir READ getTmpdir CONSTANT);
 public slots:
     QString getTmpdir();
@@ -40,7 +39,6 @@ private:
     int counter = 0;
     QTemporaryDir tmpdir;
     QList<QProcess*> workers;
-
 signals:
     void ready(int id);
 };

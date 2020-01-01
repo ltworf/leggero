@@ -53,12 +53,3 @@ int LilyPondRunner::addData(QString data) {
 
     return this->counter++;
 }
-
-QString LilyPondRunner::getData(int id) {
-    QFile f(tmpdir.path() + "/" + QString::number(id) + ".svg");
-
-    if (!f.exists())
-        return "FAILED";
-    f.open(QIODevice::ReadOnly);
-    return QString::fromUtf8(f.readAll());
-}
