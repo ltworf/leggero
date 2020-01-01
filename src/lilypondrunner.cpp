@@ -12,7 +12,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Trabucco.  If not, see <http://www.gnu.org/licenses/>.
+along with Leggero.  If not, see <http://www.gnu.org/licenses/>.
 
 Copyright (C) 2019  Salvo "LtWorf" Tomaselli
 */
@@ -24,6 +24,10 @@ Copyright (C) 2019  Salvo "LtWorf" Tomaselli
 
 LilyPondRunner::LilyPondRunner(QObject *parent) : QObject(parent)
 {
+}
+
+QString LilyPondRunner::getTmpdir() {
+    return this->tmpdir.path();
 }
 
 int LilyPondRunner::addData(QString data) {
