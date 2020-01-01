@@ -20,11 +20,22 @@ Copyright (C) 2019  Salvo "LtWorf" Tomaselli
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "lilypondrunner.h"
+#include "staffdisplay.h"
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    LilyPondRunner runner;
+    runner.addData("\\relative c {\\clef bass\n  \\time 4/4\n  \\key d \\minor\n  a4 r r r\n}");
+    runner.addData("\\relative c {\\clef bass\n  \\time 4/4\n  \\key d \\minor\n  a4 b c d\n}");
+
+    this->ui->staffDisplay->setTmpdir(runner.getTmpdir());
+    this->ui->staffDisplay->setRows(2);
+    this->ui->staffDisplay->setMax_rows(2);
 }
 
 MainWindow::~MainWindow()

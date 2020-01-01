@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,14 +19,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     src/lilypondrunner.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/staffdisplay.cpp
 
 HEADERS += \
     src/lilypondrunner.h \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/staffdisplay.h
 
 FORMS += \
-    src/mainwindow.ui
+    src/mainwindow.ui \
+    src/staffdisplay.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

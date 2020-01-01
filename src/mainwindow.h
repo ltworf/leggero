@@ -22,6 +22,8 @@ Copyright (C) 2019  Salvo "LtWorf" Tomaselli
 
 #include <QMainWindow>
 
+#include <src/staffdisplay.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
